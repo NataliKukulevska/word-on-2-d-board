@@ -10,11 +10,15 @@ export class FindWordOnBoard {
 
   isWordOnBoard( word, board ): boolean {
     let possiblePaths = this.findFirstLetter(word[0], board);
+	
+	if(possiblePaths.length == 0){
+		return false;
+	}
 
     for ( let l = 1; l < word.length; l++ ) {
       let paths: {i: number, j: number}[] = this.checkNextLetter( possiblePaths, word[l], board );
       if ( paths.length == 0 ) {
-        return false
+        return false;
       } else {
         for( let s = 0; s < possiblePaths.length; s++ ){
           board[possiblePaths[s].i][possiblePaths[s].j] = ''; // clean up used cell.
