@@ -14,6 +14,10 @@ export class FindWordOnBoard {
 	if(possiblePaths.length == 0){
 		return false;
 	}
+	
+	if (word.length > (board[0].length * board.length)) {
+		return false;
+	}
 
     for ( let l = 1; l < word.length; l++ ) {
       let paths: {i: number, j: number}[] = this.checkNextLetter( possiblePaths, word[l], board );
